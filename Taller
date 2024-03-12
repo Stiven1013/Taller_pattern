@@ -1,0 +1,62 @@
+# Definición de los comportamientos de ataque
+class AttackBehavior:
+    def attack(self):
+        pass
+
+class SoldierAttack(AttackBehavior):
+    def attack(self):
+        print("Soldier attacks with a sword!")
+
+class ArcherAttack(AttackBehavior):
+    def attack(self):
+        print("Archer attacks with a bow!")
+
+class KnightAttack(AttackBehavior):
+    def attack(self):
+        print("Knight attacks with a lance!")
+
+# Definición de los comportamientos de movimiento
+class MovementBehavior:
+    def move(self):
+        pass
+
+class SoldierMovement(MovementBehavior):
+    def move(self):
+        print("Soldier moves on foot!")
+
+class ArcherMovement(MovementBehavior):
+    def move(self):
+        print("Archer moves on foot!")
+
+class KnightMovement(MovementBehavior):
+    def move(self):
+        print("Knight moves on horseback!")
+
+# Clase principal de la unidad
+class Unit:
+    def __init__(self, attack_behavior, movement_behavior):
+        self.attack_behavior = attack_behavior()
+        self.movement_behavior = movement_behavior()
+
+    def perform_attack(self):
+        self.attack_behavior.attack()
+
+    def perform_movement(self):
+        self.movement_behavior.move()
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    # Crear unidades con diferentes comportamientos
+    soldier = Unit(SoldierAttack, SoldierMovement)
+    archer = Unit(ArcherAttack, ArcherMovement)
+    knight = Unit(KnightAttack, KnightMovement)
+
+    # Realizar acciones
+    soldier.perform_attack()
+    soldier.perform_movement()
+
+    archer.perform_attack()
+    archer.perform_movement()
+
+    knight.perform_attack()
+    knight.perform_movement()
